@@ -7,14 +7,13 @@ let userInput;
 function getData() {
 	getUserInput();
 	fetchData();
-
 }
 
 function getUserInput() {
 	userInput = document.getElementById('inputField').value;
 }
 
-// gegeven krijgen (api) 
+// gegevens krijgen (api) 
 function fetchData() {
 	fetch(`https://pokeapi.co/api/v2/pokemon/${userInput}/`)
 	.then(res => res.json()) 
@@ -41,15 +40,10 @@ let moveSet = [];
 for (i = 0; i != 4; i += 1) {
 	moveSet.push(serverData.moves[i].move.name);
 	document.getElementsByClassName("move")[i].innerHTML = moveSet[i];
-//!=4 opzoeken
 
-let weightHeader = document.getElementById('weightHeader');
-weightHeader.innerHTML = "pokemon weight <br>" + serverData.weight;
-
-
-}
-
-};
+	let weightHeader = document.getElementById('weightHeader');
+	weightHeader.innerHTML = "pokemon weight <br>" + serverData.weight;
+}};
 
 function showEvolution(serverData) {
 	let evolution = document.getElementById('evolution');
@@ -59,8 +53,4 @@ function showEvolution(serverData) {
 	} else {
 		evolution.innerHTML = 'evolve from: <br>' + serverData.evolves_from_species.name;
 	}
-
-
 }
-
-
